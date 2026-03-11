@@ -16,6 +16,7 @@ import org.tasks.data.TaskContainer
 import org.tasks.data.TaskListQuery.getQuery
 import org.tasks.data.dao.TaskDao
 import org.tasks.data.hasNotes
+import org.tasks.data.isDueToday
 import org.tasks.data.isHidden
 import org.tasks.data.isOverdue
 import org.tasks.extensions.Context.is24HourFormat
@@ -280,7 +281,7 @@ internal class TasksWidgetBuilder(
             setTextViewText(dueDateRes, text)
             setTextColor(
                 dueDateRes,
-                if (task.task.isOverdue) context.getColor(R.color.overdue) else onSurfaceVariant
+                if (task.task.isOverdue) context.getColor(R.color.overdue) else if (task.task.isDueToday) context.getColor(R.color.duetoday) else onSurfaceVariant
             )
             setTextSize(dueDateRes, max(10f, settings.textSize - 2))
             setOnClickFillInIntent(

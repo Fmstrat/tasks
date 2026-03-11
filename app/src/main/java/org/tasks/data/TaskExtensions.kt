@@ -7,6 +7,7 @@ import org.tasks.date.DateTimeUtils.toDateTime
 import org.tasks.time.DateTimeUtils2.currentTimeMillis
 import org.tasks.time.ONE_DAY
 import org.tasks.time.ONE_WEEK
+import org.tasks.time.endOfDay
 import org.tasks.time.startOfDay
 
 /** Checks whether task is hidden. Requires HIDDEN_UNTIL  */
@@ -47,6 +48,16 @@ val Task.isOverdue: Boolean
         }
         val compareTo = if (hasDueTime()) currentTimeMillis() else currentTimeMillis().startOfDay()
         return dueDate < compareTo
+    }
+
+val Task.isDueToday: Boolean
+    get() {
+        if (isCompleted || !hasDueDate()) {
+            return false
+        }
+        val start = currentTimeMillis().startOfDay()
+        val end = currentTimeMillis().endOfDay()
+        return dueDate >= start && dueDate <= end
     }
 
 fun Task.setRecurrence(rrule: Recur?) {
