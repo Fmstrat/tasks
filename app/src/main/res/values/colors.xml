@@ -17,7 +17,6 @@
   <color name="white_38">#61ffffff</color>
   <color name="white_12">#1fffffff</color>
 
-  <color name="duetoday">@color/error_color_material_light</color>
   <color name="overdue">@color/error_color_material_light</color>
 
   <color name="md_background_light">@color/design_default_color_background</color>
