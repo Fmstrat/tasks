@@ -281,7 +281,9 @@ internal class TasksWidgetBuilder(
             setTextViewText(dueDateRes, text)
             setTextColor(
                 dueDateRes,
-                if (task.task.isOverdue) context.getColor(R.color.overdue) else if (task.task.isDueToday) context.getColor(R.color.snackbar_action_color) else onSurfaceVariant
+                if (task.task.isOverdue) context.getColor(R.color.overdue)
+                    else if (task.task.isDueToday) context.getColor(R.color.snackbar_action_color)
+                    else onSurfaceVariant
             )
             setTextSize(dueDateRes, max(10f, settings.textSize - 2))
             setOnClickFillInIntent(
